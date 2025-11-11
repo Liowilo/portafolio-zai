@@ -6,6 +6,7 @@ import * as THREE from 'three';
 function ParticleField() {
   const pointsRef = useRef<THREE.Points>(null);
   const mousePosition = useRef({ x: 0, y: 0 });
+  const targetPositions = useRef<Float32Array | null>(null);
 
   const particleCount = 800; // Reduced from 2000 for better performance
 
@@ -30,6 +31,9 @@ function ParticleField() {
       originals[i3 + 1] = y;
       originals[i3 + 2] = z;
     }
+
+    // Initialize target positions
+    targetPositions.current = new Float32Array(positions);
 
     return { particlesPosition: positions, originalPositions: originals };
   }, []);
@@ -66,10 +70,14 @@ function ParticleField() {
 
   // Animation loop
   useFrame((state) => {
-    if (!pointsRef.current) return;
+    if (!pointsRef.current || !targetPositions.current) return;
 
     const time = state.clock.getElapsedTime();
     const positions = pointsRef.current.geometry.attributes.position.array as Float32Array;
+    const targets = targetPositions.current;
+
+    // Smooth interpolation factor (lower = smoother but slower response)
+    const lerpFactor = 0.08;
 
     // Animate each particle
     for (let i = 0; i < particleCount; i++) {
@@ -85,29 +93,34 @@ function ParticleField() {
       const floatY = Math.sin(time * 0.15 + origX * 0.5) * 0.1;
 
       // Start from original position plus floating motion
-      let newX = origX + floatX;
-      let newY = origY + floatY;
+      let targetX = origX + floatX;
+      let targetY = origY + floatY;
 
       // Mouse interaction - each particle responds individually
       const mouseX = mousePosition.current.x * 10;
       const mouseY = mousePosition.current.y * 10;
 
-      const dx = newX - mouseX;
-      const dy = newY - mouseY;
+      const dx = targetX - mouseX;
+      const dy = targetY - mouseY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      const interactionRadius = 4;
+      // Increased radius, reduced strength for smoother effect
+      const interactionRadius = 5;
 
       if (distance < interactionRadius && distance > 0) {
         const force = (interactionRadius - distance) / interactionRadius;
-        const pushStrength = force * force * 0.8;
-        newX += (dx / distance) * pushStrength;
-        newY += (dy / distance) * pushStrength;
+        const pushStrength = force * force * 0.3; // Reduced from 0.8 to 0.3
+        targetX += (dx / distance) * pushStrength;
+        targetY += (dy / distance) * pushStrength;
       }
 
-      // Apply new positions
-      positions[i3] = newX;
-      positions[i3 + 1] = newY;
+      // Store target positions
+      targets[i3] = targetX;
+      targets[i3 + 1] = targetY;
+
+      // Smooth interpolation (lerp) from current to target position
+      positions[i3] += (targetX - positions[i3]) * lerpFactor;
+      positions[i3 + 1] += (targetY - positions[i3 + 1]) * lerpFactor;
       positions[i3 + 2] = origZ;
     }
 
