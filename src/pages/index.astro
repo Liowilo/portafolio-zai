@@ -1,5 +1,6 @@
 ---
 import Loader from '../components/Loader';
+import SmoothScroll from '../components/SmoothScroll';
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ProjectsGrid from '../components/ProjectsGrid';
@@ -19,6 +20,7 @@ import '../styles/global.css';
 		<title>Portafolio 3D - Diseñador Gráfico</title>
 	</head>
 	<body class="overflow-x-hidden">
+		<SmoothScroll client:load />
 		<Loader client:load />
 		<Navigation client:load />
 		<Hero client:load />
