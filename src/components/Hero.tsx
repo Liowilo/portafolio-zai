@@ -71,14 +71,14 @@ export default function Hero() {
           ref={titleRef}
           className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
         >
-          Diseño <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400">3D</span>
+          Bernardo <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400">Rodríguez</span>
         </h1>
 
         <p
           ref={subtitleRef}
           className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-light"
         >
-          Creando experiencias visuales únicas que transforman ideas en arte digital tridimensional
+          Diseñador Gráfico & Creativo • Animación Digital • Branding & Comunicación Visual
         </p>
 
         <div ref={ctaRef} className="flex gap-6 justify-center flex-wrap">

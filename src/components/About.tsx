@@ -2,12 +2,14 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 const skills = [
-  { name: 'Blender', level: 95 },
-  { name: 'Cinema 4D', level: 90 },
-  { name: 'Adobe Creative Suite', level: 85 },
-  { name: 'Unreal Engine', level: 80 },
-  { name: 'ZBrush', level: 75 },
-  { name: 'Substance Painter', level: 85 },
+  { name: 'Photoshop', level: 95 },
+  { name: 'Illustrator', level: 90 },
+  { name: 'Maya', level: 85 },
+  { name: 'Blender', level: 90 },
+  { name: 'After Effects', level: 85 },
+  { name: 'Premiere', level: 80 },
+  { name: 'InDesign', level: 85 },
+  { name: 'Lightroom', level: 75 },
 ];
 
 export default function About() {
@@ -100,41 +102,29 @@ export default function About() {
 
             <div ref={contentRef} className="space-y-6">
               <p className="text-gray-300 text-lg leading-relaxed">
-                Soy un diseñador gráfico 3D apasionado por crear experiencias
-                visuales que cuentan historias. Con más de 5 años de
-                experiencia, me especializo en transformar conceptos abstractos
-                en realidades digitales impactantes.
+                Diseñador gráfico y animador digital con experiencia en la creación de piezas visuales
+                para medios digitales e impresos. Especializado en branding, comunicación visual y
+                motion graphics, desarrollo propuestas creativas con personalidad.
               </p>
 
               <p className="text-gray-300 text-lg leading-relaxed">
-                Mi enfoque combina técnica, creatividad y atención al detalle
-                para entregar proyectos que no solo cumplen expectativas, sino
-                que las superan.
+                Manejo intermedio-avanzado de herramientas como Adobe Photoshop, Illustrator y After Effects,
+                aplicadas en proyectos de diseño publicitario, identidad visual y animación 2D-3D. Además,
+                cuento con experiencia en modelado y renderizado 3D, aplicando técnicas que combinan arte y
+                tecnología para enriquecer la experiencia del usuario.
               </p>
 
-              <div className="flex gap-4 pt-6">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400">
-                    100+
+              <div className="space-y-4 pt-6 border-t border-gray-800">
+                <h4 className="text-xl font-bold text-white">Educación</h4>
+                <div>
+                  <div className="text-lg font-semibold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400">
+                    Universidad Tecmilenio
                   </div>
-                  <div className="text-gray-400 text-sm mt-2">
-                    Proyectos Completados
+                  <div className="text-gray-400 text-sm mt-1">
+                    Licenciado en Diseño Gráfico y Animación Digital
                   </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400">
-                    50+
-                  </div>
-                  <div className="text-gray-400 text-sm mt-2">
-                    Clientes Satisfechos
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400">
-                    5+
-                  </div>
-                  <div className="text-gray-400 text-sm mt-2">
-                    Años de Experiencia
+                  <div className="text-gray-500 text-sm">
+                    Enero 2022 - Enero 2027
                   </div>
                 </div>
               </div>
