@@ -3,6 +3,8 @@ import gsap from 'gsap';
 
 export default function Navigation() {
   const navRef = useRef<HTMLElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileLinksRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -31,6 +33,71 @@ export default function Navigation() {
       }
     );
   }, []);
+
+  // Animar menú móvil
+  useEffect(() => {
+    if (!mobileMenuRef.current || !mobileLinksRef.current) return;
+
+    const menuElement = mobileMenuRef.current;
+    const linksElement = mobileLinksRef.current;
+
+    const ctx = gsap.context(() => {
+      if (isMobileMenuOpen) {
+        // Animar apertura del contenedor
+        gsap.fromTo(
+          menuElement,
+          {
+            height: 0,
+            opacity: 0,
+          },
+          {
+            height: 'auto',
+            opacity: 1,
+            duration: 0.4,
+            ease: 'power2.out',
+          }
+        );
+
+        // Stagger de los elementos del menú al abrir
+        gsap.fromTo(
+          linksElement.children,
+          {
+            opacity: 0,
+            x: -20,
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.3,
+            stagger: 0.1,
+            delay: 0.2,
+            ease: 'power2.out',
+          }
+        );
+      } else {
+        // Animar cierre - primero los elementos, luego el contenedor
+        const tl = gsap.timeline();
+
+        // Animar elementos saliendo hacia la derecha con stagger invertido
+        tl.to(linksElement.children, {
+          opacity: 0,
+          x: 20,
+          duration: 0.2,
+          stagger: 0.05,
+          ease: 'power2.in',
+        })
+        // Luego cerrar el contenedor
+        .to(menuElement, {
+          height: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in',
+        }, '-=0.1'); // Solapa ligeramente con la animación anterior
+      }
+    });
+
+    return () => ctx.revert();
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { href: '#proyectos', label: 'Proyectos' },
@@ -88,63 +155,68 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-all hover:scale-110 active:scale-95"
             aria-label="Toggle menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
+            <div className="w-6 h-6 flex flex-col justify-center items-center gap-1.5 relative">
+              <span
+                className={`w-6 h-0.5 bg-white rounded-full transition-all duration-300 ${
+                  isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`}
+              />
+              <span
+                className={`w-6 h-0.5 bg-white rounded-full transition-all duration-300 ${
+                  isMobileMenuOpen ? 'opacity-0 scale-0' : ''
+                }`}
+              />
+              <span
+                className={`w-6 h-0.5 bg-white rounded-full transition-all duration-300 ${
+                  isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`}
+              />
+            </div>
           </button>
         </div>
 
         {/* Mobile menu */}
         {isMobileMenuOpen && (
           <div
-            className="md:hidden mt-6 pb-6 space-y-4 border-t border-white/20 pt-6 backdrop-blur-lg rounded-lg -mx-6 px-6"
-            style={{
-              background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))',
-            }}
+            ref={mobileMenuRef}
+            className="md:hidden overflow-hidden"
           >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-gray-300 hover:text-white transition-colors font-medium hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contacto"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full px-6 py-3 bg-linear-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-full text-center hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+            <div
+              ref={mobileLinksRef}
+              className="mt-6 pb-6 space-y-1 border-t border-white/10 pt-6 backdrop-blur-xl rounded-2xl"
               style={{
-                backdropFilter: 'blur(8px)',
-                boxShadow: '0 4px 24px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(59, 130, 246, 0.05))',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
               }}
             >
-              Trabajemos
-            </a>
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-6 py-3 text-gray-200 hover:text-white transition-all font-medium rounded-xl hover:bg-white/10 hover:drop-shadow-[0_0_12px_rgba(168,85,247,0.4)] hover:translate-x-2"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <div className="pt-4 px-4">
+                <a
+                  href="#contacto"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full px-6 py-3.5 text-white font-semibold rounded-xl text-center transition-all hover:scale-105 active:scale-95"
+                  style={{
+                    background: 'linear-gradient(135deg, #a855f7, #3b82f6)',
+                    backdropFilter: 'blur(8px)',
+                    boxShadow: '0 8px 24px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                  }}
+                >
+                  Trabajemos Juntos
+                </a>
+              </div>
+            </div>
           </div>
         )}
       </div>
