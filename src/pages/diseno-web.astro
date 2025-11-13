@@ -1,0 +1,231 @@
+---
+import Navigation from '../components/Navigation';
+import DisenoWebGallery from '../components/DisenoWebGallery';
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Diseño para Aplicación Web - Portafolio de Bernardo Rodríguez" />
+		<title>Diseño para Aplicación Web - Bernardo Rodríguez</title>
+	</head>
+	<body class="overflow-x-hidden">
+		<Navigation client:load />
+		
+		<!-- Hero Section -->
+		<section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-linear-to-br from-gray-950 via-gray-900 to-black pt-24">
+			<!-- Grid background -->
+			<div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[4rem_4rem] pointer-events-none" />
+			
+			<!-- Gradient orb -->
+			<div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse pointer-events-none" />
+			
+			<div class="relative z-10 max-w-6xl mx-auto px-6 text-center py-16">
+				<h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+					Diseño para <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-400">Aplicación Web</span>
+				</h1>
+				
+				<p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-light">
+					UI/UX Design
+				</p>
+				
+				<div class="flex flex-wrap gap-4 justify-center text-sm text-gray-400">
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">📅 Ene 2024 - Jun 2024</span>
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">🎨 UI/UX</span>
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">📱 Responsive</span>
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">✨ Prototipos</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Dynamic Gallery Component -->
+		<DisenoWebGallery client:load />
+
+		<!-- Technical Details -->
+		<section class="py-16 bg-gray-950">
+			<div class="max-w-7xl mx-auto px-6">
+				<h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+					Herramientas y Metodología
+				</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+					<!-- Tool 1 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+						<div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-3zM14 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1v-3z" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">Figma</h3>
+						<p class="text-gray-400 text-sm">Wireframes y prototipos</p>
+					</div>
+
+					<!-- Tool 2 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+						<div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">Photoshop</h3>
+						<p class="text-gray-400 text-sm">Mockups de alta fidelidad</p>
+					</div>
+
+					<!-- Tool 3 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+						<div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">Illustrator</h3>
+						<p class="text-gray-400 text-sm">Iconos y elementos vectoriales</p>
+					</div>
+
+					<!-- Tool 4 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+						<div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">User Research</h3>
+						<p class="text-gray-400 text-sm">Investigación de usuarios</p>
+					</div>
+				</div>
+
+				<!-- Methodology -->
+				<div class="mt-16 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
+					<h3 class="text-2xl font-bold text-white mb-6 text-center">
+						Proceso de Diseño
+					</h3>
+					<div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+						<div class="text-center">
+							<div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+								<span class="text-2xl font-bold text-blue-400">1</span>
+							</div>
+							<h4 class="text-white font-semibold mb-2">Research</h4>
+							<p class="text-gray-400 text-sm">Investigación de usuarios y competencia</p>
+						</div>
+						<div class="text-center">
+							<div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+								<span class="text-2xl font-bold text-blue-400">2</span>
+							</div>
+							<h4 class="text-white font-semibold mb-2">Wireframes</h4>
+							<p class="text-gray-400 text-sm">Esquemas de baja fidelidad</p>
+						</div>
+						<div class="text-center">
+							<div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+								<span class="text-2xl font-bold text-blue-400">3</span>
+							</div>
+							<h4 class="text-white font-semibold mb-2">Prototipo</h4>
+							<p class="text-gray-400 text-sm">Mockups interactivos</p>
+						</div>
+						<div class="text-center">
+							<div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+								<span class="text-2xl font-bold text-blue-400">4</span>
+							</div>
+							<h4 class="text-white font-semibold mb-2">Testing</h4>
+							<p class="text-gray-400 text-sm">Pruebas con usuarios</p>
+						</div>
+						<div class="text-center">
+							<div class="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+								<span class="text-2xl font-bold text-blue-400">5</span>
+							</div>
+							<h4 class="text-white font-semibold mb-2">Diseño Final</h4>
+							<p class="text-gray-400 text-sm">Alta fidelidad y handoff</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features Section -->
+		<section class="py-16 bg-black">
+			<div class="max-w-7xl mx-auto px-6">
+				<h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+					Características del Proyecto
+				</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Feature 1 -->
+					<div class="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+						<div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+							<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-white mb-3">Mobile First</h3>
+						<p class="text-gray-400">Diseño optimizado primero para dispositivos móviles, garantizando una experiencia fluida en todas las pantallas.</p>
+					</div>
+
+					<!-- Feature 2 -->
+					<div class="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+						<div class="w-14 h-14 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6">
+							<svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-white mb-3">Sistema de Diseño</h3>
+						<p class="text-gray-400">Componentes reutilizables y consistentes que facilitan el mantenimiento y escalabilidad del proyecto.</p>
+					</div>
+
+					<!-- Feature 3 -->
+					<div class="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+						<div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6">
+							<svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+							</svg>
+						</div>
+						<h3 class="text-xl font-bold text-white mb-3">Accesibilidad</h3>
+						<p class="text-gray-400">Diseño inclusivo siguiendo estándares WCAG para asegurar que todos puedan usar la aplicación.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="py-16 bg-gray-950 relative overflow-hidden">
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]" />
+			
+			<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+				<h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+					¿Interesado en este proyecto?
+				</h2>
+				<p class="text-gray-300 text-lg mb-8">
+					Descubre más trabajos o contáctame para discutir tu próximo proyecto UI/UX
+				</p>
+				
+				<div class="flex flex-wrap gap-4 justify-center">
+					<a
+						href="/"
+						class="px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-full backdrop-blur-sm hover:bg-white/10 transition-all hover:scale-105"
+					>
+						← Volver al Portafolio
+					</a>
+					<a
+						href="/#contacto"
+						class="px-8 py-4 bg-linear-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-blue-500/50 transition-all hover:scale-105"
+					>
+						Contactar
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="bg-black border-t border-gray-900 py-12">
+			<div class="max-w-7xl mx-auto px-6">
+				<div class="text-center text-gray-400">
+					<p>&copy; 2025 Bernardo Rodríguez. Todos los derechos reservados.</p>
+					<p class="mt-2 text-sm">Diseñado con pasión y creatividad</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

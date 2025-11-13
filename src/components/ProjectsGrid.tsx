@@ -9,6 +9,7 @@ const projects = [
     description: 'Modelado 3D de espacio virtual con Blender, integrando texturas y renders para exposición académica de artes digitales',
     image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80',
     date: 'Ago 2023 - Dic 2023',
+    link: '/fotografia',
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const projects = [
     description: 'Desarrollo de interfaz visual y experiencia de usuario (UI/UX) para aplicación web. Wireframes, prototipos y diseño gráfico en Photoshop e Illustrator',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
     date: 'Ene 2024 - Jun 2024',
+    link: '/diseno-web',
   },
   {
     id: 3,
@@ -25,9 +27,18 @@ const projects = [
     description: 'Modelado y diseño de escenario tridimensional con mobiliario, iluminación y renderizado. Proyecto realizado en Blender y Maya',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
     date: 'Ago 2024 - Dic 2024',
+    link: '/escenario-3d',
   },
   {
     id: 4,
+    title: 'Diseño de Producto',
+    category: 'Packaging & Branding',
+    description: 'Diseño de packaging y productos para marcas comerciales: vinilos, bolsas de café, blisters, empaques y elementos de branding. Render 3D y mockups fotorrealistas',
+    image: 'https://images.unsplash.com/photo-1416339134316-0e91dc9ded92?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    date: 'Ene 2024 - Jun 2024',
+  },
+  {
+    id: 5,
     title: 'Creative UI Pack',
     category: 'Game Design',
     description: 'Diseño de interfaces gráficas para videojuegos independientes, creando menús interactivos, HUDs y elementos visuales en Krita, Figma y Photoshop',
@@ -35,7 +46,7 @@ const projects = [
     date: 'Ago 2024 - Dic 2024',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Cortometraje',
     category: 'Edición de Video',
     description: 'Producción y edición de video tipo corto grabado con cámara. Técnicas de grabación en exteriores/interiores y edición digital cinematográfica',
@@ -43,7 +54,7 @@ const projects = [
     date: 'Ene 2025 - Dic 2025',
   },
   {
-    id: 6,
+    id: 7,
     title: 'Rendering 3D',
     category: 'Visualización Arquitectónica',
     description: 'Creación de imágenes fotorrealistas y representaciones visuales de alta calidad para proyectos arquitectónicos, de producto y diseño digital',
@@ -55,7 +66,7 @@ const projects = [
 export default function ProjectsGrid() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const projectRefs = useRef<(HTMLDivElement | HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
     // Observador de intersección para animar cuando la sección sea visible
@@ -122,37 +133,51 @@ export default function ProjectsGrid() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              ref={(el) => {
-                projectRefs.current[index] = el;
-              }}
-              className="group relative overflow-hidden rounded-2xl bg-gray-900 cursor-pointer"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
+          {projects.map((project, index) => {
+            const ProjectWrapper = project.link ? 'a' : 'div';
+            const wrapperProps = project.link ? { href: project.link } : {};
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <span className="text-purple-400 text-sm font-semibold mb-2">
-                  {project.category}
-                </span>
-                <h3 className="text-white text-2xl font-bold mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-300 text-sm">{project.description}</p>
-              </div>
+            return (
+              <ProjectWrapper
+                key={project.id}
+                {...wrapperProps}
+                ref={(el: HTMLDivElement | HTMLAnchorElement | null) => {
+                  projectRefs.current[index] = el;
+                }}
+                className="group relative overflow-hidden rounded-2xl bg-gray-900 cursor-pointer block"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
 
-              {/* Hover border effect */}
-              <div className="absolute inset-0 border-2 border-purple-500/0 group-hover:border-purple-500/50 rounded-2xl transition-colors duration-300" />
-            </div>
-          ))}
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <span className="text-purple-400 text-sm font-semibold mb-2">
+                    {project.category}
+                  </span>
+                  <h3 className="text-white text-2xl font-bold mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm mb-3">{project.description}</p>
+                  {project.link && (
+                    <span className="inline-flex items-center text-white text-sm font-semibold">
+                      Ver proyecto completo 
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  )}
+                </div>
+
+                {/* Hover border effect */}
+                <div className="absolute inset-0 border-2 border-purple-500/0 group-hover:border-purple-500/50 rounded-2xl transition-colors duration-300" />
+              </ProjectWrapper>
+            );
+          })}
         </div>
       </div>
     </section>

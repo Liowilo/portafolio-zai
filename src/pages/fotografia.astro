@@ -1,0 +1,144 @@
+---
+import Navigation from '../components/Navigation';
+import FotografiaGallery from '../components/FotografiaGallery';
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Toma y Edición de Fotografía - Portafolio de Bernardo Rodríguez" />
+		<title>Toma y Edición de Fotografía - Bernardo Rodríguez</title>
+	</head>
+	<body class="overflow-x-hidden">
+		<Navigation client:load />
+		
+		<!-- Hero Section -->
+		<section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-linear-to-br from-gray-950 via-gray-900 to-black pt-24">
+			<!-- Grid background -->
+			<div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[4rem_4rem] pointer-events-none" />
+			
+			<!-- Gradient orb -->
+			<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-pulse pointer-events-none" />
+			
+			<div class="relative z-10 max-w-6xl mx-auto px-6 text-center py-16">
+				<h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+					Toma y Edición de <span class="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400">Fotografía</span>
+				</h1>
+				
+				<p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-light">
+					Fotografía Publicitaria
+				</p>
+				
+				<div class="flex flex-wrap gap-4 justify-center text-sm text-gray-400">
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">📅 Ago 2023 - Dic 2023</span>
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">📷 Fotografía</span>
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">🎨 Edición Digital</span>
+					<span class="px-4 py-2 bg-gray-900 rounded-full border border-gray-800">✨ Retoque</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Dynamic Gallery Component -->
+		<FotografiaGallery client:load />
+
+		<!-- Technical Details -->
+		<section class="py-16 bg-gray-950">
+			<div class="max-w-7xl mx-auto px-6">
+				<h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+					Herramientas y Técnicas
+				</h2>
+				
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+					<!-- Tool 1 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 transition-colors">
+						<div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">Cámara Profesional</h3>
+						<p class="text-gray-400 text-sm">Captura de alta calidad</p>
+					</div>
+
+					<!-- Tool 2 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 transition-colors">
+						<div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">Photoshop</h3>
+						<p class="text-gray-400 text-sm">Retoque y composición</p>
+					</div>
+
+					<!-- Tool 3 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 transition-colors">
+						<div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">Lightroom</h3>
+						<p class="text-gray-400 text-sm">Color grading</p>
+					</div>
+
+					<!-- Tool 4 -->
+					<div class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-purple-500/50 transition-colors">
+						<div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+							<svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+							</svg>
+						</div>
+						<h3 class="text-white font-bold text-lg mb-2">Edición Digital</h3>
+						<p class="text-gray-400 text-sm">Postproducción avanzada</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA Section -->
+		<section class="py-16 bg-black relative overflow-hidden">
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px]" />
+			
+			<div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+				<h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+					¿Te gustó este proyecto?
+				</h2>
+				<p class="text-gray-300 text-lg mb-8">
+					Explora más trabajos o contáctame para colaborar en tu próximo proyecto
+				</p>
+				
+				<div class="flex flex-wrap gap-4 justify-center">
+					<a
+						href="/"
+						class="px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-full backdrop-blur-sm hover:bg-white/10 transition-all hover:scale-105"
+					>
+						← Volver al Portafolio
+					</a>
+					<a
+						href="/#contacto"
+						class="px-8 py-4 bg-linear-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105"
+					>
+						Contactar
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="bg-black border-t border-gray-900 py-12">
+			<div class="max-w-7xl mx-auto px-6">
+				<div class="text-center text-gray-400">
+					<p>&copy; 2025 Bernardo Rodríguez. Todos los derechos reservados.</p>
+					<p class="mt-2 text-sm">Diseñado con pasión y creatividad</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

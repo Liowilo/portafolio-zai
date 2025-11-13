@@ -7,6 +7,12 @@ export default function Navigation() {
   const mobileLinksRef = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
+
+  // Detectar si estamos en la página principal
+  useEffect(() => {
+    setIsHomePage(window.location.pathname === '/');
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,9 +105,10 @@ export default function Navigation() {
     return () => ctx.revert();
   }, [isMobileMenuOpen]);
 
+  // Ajustar links según la página
   const navLinks = [
-    { href: '#proyectos', label: 'Proyectos' },
-    { href: '#contacto', label: 'Contacto' },
+    { href: isHomePage ? '#proyectos' : '/#proyectos', label: 'Proyectos' },
+    { href: isHomePage ? '#contacto' : '/#contacto', label: 'Contacto' },
   ];
 
   return (
@@ -122,7 +129,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             className="text-2xl font-bold text-white hover:text-purple-400 transition-colors drop-shadow-[0_0_8px_rgba(168,85,247,0.3)]"
           >
             Portafolio<span className="text-purple-400">3D</span>
@@ -141,7 +148,7 @@ export default function Navigation() {
             ))}
 
             <a
-              href="#contacto"
+              href={isHomePage ? '#contacto' : '/#contacto'}
               className="relative px-6 py-3 bg-linear-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105 overflow-hidden"
               style={{
                 backdropFilter: 'blur(8px)',
